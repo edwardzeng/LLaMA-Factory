@@ -9,6 +9,8 @@ from transformers import Seq2SeqTrainer
 from llmtuner.extras.constants import IGNORE_INDEX
 from llmtuner.extras.logging import get_logger
 
+from custom_seq2seq_trainer import Seq2SeqTrainerMonitor
+
 if TYPE_CHECKING:
     from transformers.trainer import PredictionOutput
 
@@ -16,7 +18,7 @@ if TYPE_CHECKING:
 logger = get_logger(__name__)
 
 
-class CustomSeq2SeqTrainer(Seq2SeqTrainer):
+class CustomSeq2SeqTrainer(Seq2SeqTrainerMonitor):
     r"""
     Inherits PeftTrainer to compute generative metrics such as BLEU and ROUGE.
     """
